@@ -54,7 +54,6 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 - Primer commit local hecho (`git init`, rama `main`); push a GitHub sigue pendiente de que Gerardo provea un repo remoto.
 
 ## 5. Pendiente / próximos pasos
-- [ ] Cuando Gerardo tenga un repo remoto en GitHub: `git remote add origin` + primer push — prioridad: alta
 - [ ] Revisión visual/funcional por Gerardo antes de considerar el MVP "terminado" para presentar — prioridad: alta
 - [ ] Definir si hace falta un modal de confirmación con la identidad de marca en vez de `confirm()` nativo del navegador (eliminar disciplina, cancelar inscripción) — prioridad: baja (cosmético)
 - [ ] Evaluar si se agrega un rol "profesor" con panel propio (fuera del alcance original) — prioridad: baja
@@ -72,11 +71,11 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 - Las clases son horarios recurrentes semanales (`dia_semana` + hora), no fechas puntuales de calendario — motivo: KISS, así funcionan la mayoría de los gimnasios reales y evita modelar un calendario completo para una demo.
 - Cancelar una clase cambia su estado, no la borra — motivo: se necesita conservar el historial y poder avisar a los inscriptos.
 - El aviso de WhatsApp es un link `wa.me` por alumno generado en el cliente (con su teléfono y un mensaje pre-armado), no un envío automático — motivo: no hay integración con WhatsApp Business API en el alcance de la demo.
-- Push a GitHub queda pendiente hasta que Gerardo provea un repo remoto — motivo: decisión explícita en la junta de organización (sesión 1).
+- Repo remoto: `https://github.com/GerardoMexDev/Demo-Club.git`, conectado como `origin` y con la rama `main` pusheada — motivo: Gerardo lo proveyó en la sesión 1, ya no se trabaja solo en local.
 
 ## 8. Credenciales / accesos
 - Sin credenciales reales. Login demo sin passwords (botones "Ingresar como Admin/Alumno"), guardado en `localStorage` del navegador — no es un mecanismo de autenticación real, solo para la demo.
-- Repo GitHub: no configurado todavía (trabajo en Git local únicamente, rama `main`).
+- Repo GitHub: `https://github.com/GerardoMexDev/Demo-Club` (rama `main`).
 
 ## 9. Notas de contexto de negocio
 - Es un proyecto propio (demo/portfolio), no hay un cliente real detrás todavía — el "negocio" es ficticio (club PULSO) pensado para ilustrar el caso de uso.
