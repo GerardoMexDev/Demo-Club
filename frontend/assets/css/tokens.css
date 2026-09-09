@@ -1,0 +1,62 @@
+/*
+ * Archivo: tokens.css
+ * Proyecto: PULSO Club (demo)
+ * Descripcion: Variables del sistema de diseno (ver planeacion/11-sistema-diseno.md).
+ *              Unica fuente de verdad de color/tipografia/espaciado/formas.
+ * Creado: 2026-09-09
+ */
+:root {
+  /* Color - tokens semanticos */
+  --color-primario: #FF6620;
+  --color-primario-hover: #E84E0A;
+  --color-primario-texto: #1A0D05;
+  --color-secundario: #14A0AC;
+  --color-texto: #F5F7F9;
+  --color-texto-suave: #98A2AE;
+  --color-fondo: #0D1116;
+  --color-fondo-alt: #191F26;
+  --color-fondo-elevado: #212933;
+  --color-borde: #2A323A;
+  --color-error: #EF4444;
+  --color-error-fondo: #3A1414;
+  --color-exito: #22C55E;
+  --color-exito-fondo: #143321;
+  --color-advertencia: #F5A623;
+  --color-advertencia-fondo: #3A2A0C;
+  --color-info: #14A0AC;
+  --color-info-fondo: #0D2E31;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #1EBE59;
+
+  /* Tipografia */
+  --fuente-titulos: 'Space Grotesk', system-ui, sans-serif;
+  --fuente-base: 'Inter', system-ui, sans-serif;
+  --texto-h1: 2.441rem;
+  --texto-h2: 1.953rem;
+  --texto-h3: 1.563rem;
+  --texto-h4: 1.25rem;
+  --texto-cuerpo: 1rem;
+  --texto-small: 0.8125rem;
+
+  /* Espaciado (base 8px) */
+  --esp-xs: 4px; --esp-sm: 8px; --esp-md: 16px;
+  --esp-lg: 24px; --esp-xl: 32px; --esp-2xl: 48px; --esp-3xl: 64px;
+
+  /* Formas */
+  --radio-sm: 6px; --radio-md: 12px; --radio-lg: 20px; --radio-full: 9999px;
+  --sombra-sm: 0 1px 2px rgba(0,0,0,.4);
+  --sombra-md: 0 4px 12px rgba(0,0,0,.45);
+  --sombra-lg: 0 12px 32px rgba(0,0,0,.5);
+  --glow-primario: 0 0 0 3px rgba(255,102,32,.25);
+
+  /* Timing de animacion */
+  --dur-rapido: 150ms; --dur-normal: 250ms; --dur-enfasis: 400ms;
+  --curva: cubic-bezier(.4,0,.2,1);
+
+  --container-max: 1200px;
+  --nav-inferior-alto: 64px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-rapido: 0ms; --dur-normal: 0ms; --dur-enfasis: 0ms; }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disciplinas — PULSO Club Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<style>
+  .disciplina-card { display: flex; flex-direction: column; gap: var(--esp-md); }
+  .lista-profesores-disciplina { display: flex; flex-direction: column; gap: var(--esp-sm); }
+  .profesor-fila { display: flex; align-items: center; justify-content: space-between; background: var(--color-fondo); border-radius: var(--radio-sm); padding: 8px 12px; }
+  .asignar-profesor { display: flex; gap: var(--esp-sm); }
+  .profesor-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--color-fondo-alt); border: 1px solid var(--color-borde); border-radius: var(--radio-full); padding: 6px 14px; }
+</style>
+</head>
+<body class="pantalla">
+  <div id="nav-admin" class="nav-admin"></div>
+
+  <main class="container" style="padding-top: var(--esp-xl);">
+    <div class="flex items-center justify-between flex-wrap gap-md">
+      <div>
+        <h1>Disciplinas</h1>
+        <p>Catálogo de deportes y asignación de profesores (máximo 2 por disciplina).</p>
+      </div>
+      <button id="btn-nueva-disciplina" class="btn btn-primario">+ Nueva disciplina</button>
+    </div>
+
+    <section id="lista-disciplinas" class="grid-cards" aria-label="Disciplinas" style="margin-top: var(--esp-lg);">
+      <div class="card"><div class="skeleton" style="height:120px"></div></div>
+    </section>
+
+    <h2 style="margin-top: var(--esp-2xl);">Profesores</h2>
+    <div class="card">
+      <form id="form-nuevo-profesor" class="flex gap-md flex-wrap items-end">
+        <div class="campo" style="flex:1; min-width:160px; margin-bottom:0;">
+          <label for="nombre-profesor">Nombre</label>
+          <input class="input" id="nombre-profesor" name="nombre" required>
+        </div>
+        <div class="campo" style="flex:1; min-width:160px; margin-bottom:0;">
+          <label for="especialidad-profesor">Especialidad</label>
+          <input class="input" id="especialidad-profesor" name="especialidad">
+        </div>
+        <button class="btn btn-secundario" type="submit">Agregar profesor</button>
+      </form>
+      <div id="lista-profesores" class="flex flex-wrap gap-sm" style="margin-top: var(--esp-md);"></div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="modal-disciplina">
+    <div class="modal-caja">
+      <h3 id="titulo-modal-disciplina">Nueva disciplina</h3>
+      <form id="form-disciplina">
+        <input type="hidden" name="id">
+        <div class="campo">
+          <label for="nombre-disciplina">Nombre</label>
+          <input class="input" id="nombre-disciplina" name="nombre" required>
+        </div>
+        <div class="campo">
+          <label for="descripcion-disciplina">Descripción</label>
+          <textarea class="input" id="descripcion-disciplina" name="descripcion" rows="2"></textarea>
+        </div>
+        <div class="flex gap-md justify-between" style="margin-top: var(--esp-lg);">
+          <button type="button" class="btn btn-secundario" id="btn-cancelar-modal-disciplina">Cancelar</button>
+          <button type="submit" class="btn btn-primario">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="/admin/js/disciplinas.js"></script>
+</body>
+</html>

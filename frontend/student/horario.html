@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi horario — PULSO Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<style>
+  body { padding-bottom: calc(var(--nav-inferior-alto) + var(--esp-lg)); max-width: 560px; margin: 0 auto; }
+  .lista-horario { padding: 0 var(--esp-md); display: flex; flex-direction: column; gap: var(--esp-lg); }
+  .dia-titulo { font-size: var(--texto-small); text-transform: uppercase; letter-spacing: .06em; color: var(--color-texto-suave); margin: 0 0 var(--esp-sm); }
+  .clase-card { display: flex; flex-direction: column; gap: var(--esp-sm); }
+  .clase-card-top { display: flex; align-items: center; justify-content: space-between; }
+  .aviso-cancelada { background: var(--color-error-fondo); color: var(--color-error); border-radius: var(--radio-sm); padding: var(--esp-sm); font-size: var(--texto-small); }
+</style>
+</head>
+<body>
+  <header class="header-simple">
+    <h1>Mi horario</h1>
+    <p>Tus clases confirmadas y en lista de espera.</p>
+  </header>
+
+  <main class="lista-horario" id="lista-horario">
+    <div class="card"><div class="skeleton" style="height:90px"></div></div>
+  </main>
+
+  <nav class="nav-inferior" id="nav-inferior"></nav>
+
+  <script type="module" src="/student/js/horario.js"></script>
+</body>
+</html>

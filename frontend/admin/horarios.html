@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horarios — PULSO Club Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<style>
+  .filtros-horarios { display: flex; gap: var(--esp-md); flex-wrap: wrap; align-items: center; margin: var(--esp-lg) 0; }
+  .filtro-bloque { display: flex; gap: 6px; background: var(--color-fondo-alt); border: 1px solid var(--color-borde); border-radius: var(--radio-full); padding: 4px; }
+  .filtro-bloque button { border: none; background: transparent; color: var(--color-texto-suave); padding: 6px 16px; border-radius: var(--radio-full); font-size: var(--texto-small); font-weight: 600; cursor: pointer; transition: background var(--dur-rapido) var(--curva), color var(--dur-rapido) var(--curva); }
+  .filtro-bloque button.activo { background: var(--color-primario); color: var(--color-primario-texto); }
+  .dia-grupo { margin-bottom: var(--esp-xl); }
+  .dia-grupo h3 { margin-bottom: var(--esp-sm); }
+  .fila-clase { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-md); flex-wrap: wrap; }
+  .fila-clase + .fila-clase { margin-top: var(--esp-sm); }
+  .lista-inscriptos-whatsapp { display: flex; flex-direction: column; gap: var(--esp-sm); margin: var(--esp-md) 0; }
+  .inscripto-fila { display: flex; align-items: center; justify-content: space-between; background: var(--color-fondo); border-radius: var(--radio-sm); padding: 10px 14px; gap: var(--esp-sm); }
+</style>
+</head>
+<body class="pantalla">
+  <div id="nav-admin" class="nav-admin"></div>
+
+  <main class="container" style="padding-top: var(--esp-xl);">
+    <div class="flex items-center justify-between flex-wrap gap-md">
+      <div>
+        <h1>Horarios</h1>
+        <p>Abrí grupos nuevos, modificá horarios o cancelá clases.</p>
+      </div>
+      <button id="btn-abrir-grupo" class="btn btn-primario">+ Abrir grupo</button>
+    </div>
+
+    <div class="filtros-horarios">
+      <div class="filtro-bloque" id="filtro-bloque">
+        <button data-bloque="todos" class="activo">Todos</button>
+        <button data-bloque="manana">Mañana</button>
+        <button data-bloque="tarde">Tarde</button>
+      </div>
+      <select class="input" id="filtro-disciplina" style="max-width:220px;">
+        <option value="">Todas las disciplinas</option>
+      </select>
+    </div>
+
+    <div id="agenda-semanal">
+      <div class="card"><div class="skeleton" style="height:80px"></div></div>
+    </div>
+  </main>
+
+  <!-- Modal: abrir / editar clase -->
+  <div class="modal-overlay" id="modal-clase">
+    <div class="modal-caja">
+      <h3 id="titulo-modal-clase">Abrir grupo</h3>
+      <form id="form-clase">
+        <input type="hidden" name="id">
+        <div class="campo">
+          <label for="disciplina-clase">Disciplina</label>
+          <select class="input" id="disciplina-clase" name="disciplina_id" required></select>
+        </div>
+        <div class="campo">
+          <label for="profesor-clase">Profesor</label>
+          <select class="input" id="profesor-clase" name="profesor_id" required></select>
+          <span class="texto-small" id="aviso-sin-profesores"></span>
+        </div>
+        <div class="campo">
+          <label for="dia-clase">Día</label>
+          <select class="input" id="dia-clase" name="dia_semana" required>
+            <option value="0">Lunes</option>
+            <option value="1">Martes</option>
+            <option value="2">Miércoles</option>
+            <option value="3">Jueves</option>
+            <option value="4">Viernes</option>
+            <option value="5">Sábado</option>
+            <option value="6">Domingo</option>
+          </select>
+        </div>
+        <div class="fila-campos">
+          <div class="campo">
+            <label for="hora-inicio-clase">Hora de inicio</label>
+            <input class="input" type="time" id="hora-inicio-clase" name="hora_inicio" required>
+          </div>
+          <div class="campo">
+            <label for="hora-fin-clase">Hora de fin</label>
+            <input class="input" type="time" id="hora-fin-clase" name="hora_fin" required>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="cupo-clase">Cupo máximo</label>
+          <input class="input" type="number" id="cupo-clase" name="cupo_maximo" min="1" value="15" required>
+        </div>
+        <div class="flex gap-md justify-between" style="margin-top: var(--esp-lg);">
+          <button type="button" class="btn btn-secundario" id="btn-cancelar-modal-clase">Cancelar</button>
+          <button type="submit" class="btn btn-primario">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: motivo de cancelacion -->
+  <div class="modal-overlay" id="modal-cancelar-clase">
+    <div class="modal-caja">
+      <h3>Cancelar clase</h3>
+      <p>Los alumnos inscriptos van a quedar marcados para poder avisarles por WhatsApp.</p>
+      <form id="form-cancelar-clase">
+        <input type="hidden" name="id">
+        <div class="campo">
+          <label for="motivo-cancelacion">Motivo (opcional)</label>
+          <textarea class="input" id="motivo-cancelacion" name="motivo" rows="2" placeholder="Ej: profesor con licencia médica"></textarea>
+        </div>
+        <div class="flex gap-md justify-between" style="margin-top: var(--esp-lg);">
+          <button type="button" class="btn btn-secundario" id="btn-volver-modal-cancelar">Volver</button>
+          <button type="submit" class="btn btn-peligro">Cancelar clase</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: avisar por WhatsApp -->
+  <div class="modal-overlay" id="modal-whatsapp">
+    <div class="modal-caja">
+      <h3>Avisar por WhatsApp</h3>
+      <p id="descripcion-whatsapp"></p>
+      <div class="lista-inscriptos-whatsapp" id="lista-inscriptos-whatsapp"></div>
+      <div class="flex gap-md justify-between" style="margin-top: var(--esp-lg);">
+        <button type="button" class="btn btn-secundario" id="btn-cerrar-modal-whatsapp">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/admin/js/horarios.js"></script>
+</body>
+</html>

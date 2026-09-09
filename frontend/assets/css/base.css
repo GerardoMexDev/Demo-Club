@@ -1,0 +1,74 @@
+/*
+ * Archivo: base.css
+ * Proyecto: PULSO Club (demo)
+ * Descripcion: Reset, tipografia y utilidades de layout compartidas.
+ * Creado: 2026-09-09
+ */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-base);
+  font-size: var(--texto-cuerpo);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: var(--fuente-titulos);
+  line-height: 1.15;
+  margin: 0 0 var(--esp-sm);
+  font-weight: 700;
+}
+h1 { font-size: var(--texto-h1); }
+h2 { font-size: var(--texto-h2); }
+h3 { font-size: var(--texto-h3); font-weight: 600; }
+h4 { font-size: var(--texto-h4); font-weight: 600; }
+p { margin: 0 0 var(--esp-md); color: var(--color-texto-suave); }
+a { color: var(--color-secundario); }
+small, .texto-small { font-size: var(--texto-small); color: var(--color-texto-suave); }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; }
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--esp-md);
+}
+
+.pantalla {
+  min-height: 100vh;
+  padding-bottom: var(--esp-2xl);
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--esp-sm); }
+.gap-md { gap: var(--esp-md); }
+.gap-lg { gap: var(--esp-lg); }
+.flex-wrap { flex-wrap: wrap; }
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--esp-md);
+}
+
+/* Scrollbar sutil, consistente con el tema oscuro */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-borde); border-radius: var(--radio-full); }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--glow-primario);
+  border-radius: var(--radio-sm);
+}

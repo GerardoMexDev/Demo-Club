@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULSO Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<style>
+  body {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(255,102,32,.16), transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(20,160,172,.16), transparent 40%),
+      var(--color-fondo);
+    padding: var(--esp-md);
+  }
+  .login-caja {
+    width: 100%; max-width: 420px;
+    text-align: center;
+    animation: aparecer var(--dur-enfasis) var(--curva);
+  }
+  @keyframes aparecer { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .marca-login {
+    font-family: var(--fuente-titulos); font-weight: 700; font-size: 2.75rem;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-bottom: var(--esp-xs);
+  }
+  .marca-login .punto { color: var(--color-primario); }
+  .tagline { margin-bottom: var(--esp-2xl); }
+  .opciones-login { display: flex; flex-direction: column; gap: var(--esp-md); }
+  .opcion-rol {
+    display: flex; align-items: center; gap: var(--esp-md);
+    background: var(--color-fondo-alt); border: 1px solid var(--color-borde);
+    border-radius: var(--radio-md); padding: var(--esp-lg); text-align: left;
+    cursor: pointer; transition: border-color var(--dur-rapido) var(--curva), transform var(--dur-rapido) var(--curva), box-shadow var(--dur-rapido) var(--curva);
+    color: inherit; width: 100%;
+  }
+  .opcion-rol:hover { border-color: var(--color-primario); transform: translateY(-2px); box-shadow: var(--sombra-md); }
+  .opcion-rol .icono {
+    width: 44px; height: 44px; border-radius: var(--radio-md); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  }
+  .opcion-rol.admin .icono { background: var(--color-info-fondo); color: var(--color-info); }
+  .opcion-rol.alumno .icono { background: rgba(255,102,32,.15); color: var(--color-primario); }
+  .opcion-rol strong { display: block; font-size: 1.05rem; }
+  .opcion-rol span { color: var(--color-texto-suave); font-size: var(--texto-small); }
+  .footer-login { margin-top: var(--esp-2xl); }
+</style>
+</head>
+<body>
+  <div class="login-caja">
+    <div class="marca-login">PULSO<span class="punto">●</span>Club</div>
+    <p class="tagline">Tu club, tu ritmo. Prototipo de gestión deportiva.</p>
+
+    <div class="opciones-login">
+      <button class="opcion-rol admin" data-rol="admin">
+        <span class="icono" aria-hidden="true">⚙</span>
+        <span>
+          <strong>Ingresar como Admin</strong>
+          <span>Gestioná disciplinas, horarios y avisos</span>
+        </span>
+      </button>
+      <button class="opcion-rol alumno" data-rol="alumno">
+        <span class="icono" aria-hidden="true">●</span>
+        <span>
+          <strong>Ingresar como Alumno</strong>
+          <span>Mirá tu horario y sumate a nuevas clases</span>
+        </span>
+      </button>
+    </div>
+
+    <p class="footer-login texto-small">Acceso de demo — sin contraseña.</p>
+  </div>
+
+  <script type="module" src="/assets/js/login.js"></script>
+</body>
+</html>
