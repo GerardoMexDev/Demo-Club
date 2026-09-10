@@ -57,6 +57,7 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 - Durante el deploy, Render usaba por defecto Python 3.14 y fallaba al compilar `pydantic-core` (sin wheel precompilado para esa versión tan nueva, y el filesystem de build de Render es de solo lectura para la caché de Rust/cargo). Se agregó `backend/runtime.txt` (no lo tomó) y se resolvió fijando la variable de entorno `PYTHON_VERSION=3.12.4` en el dashboard de Render — build y deploy exitosos.
 - Demo en producción confirmada funcionando por Gerardo: https://demo-club.onrender.com/
 - Gerardo avisó que van a venir pedidos futuros ya con datos reales (no ficticios) sobre esta base.
+- Gerardo adelantó (sin confirmar todavía) que si el proyecto sigue adelante podría crecer a algo más parecido a un CRM: más usuarios, más funcionalidades a pedido, y reportes. No se tocó código por esto — queda anotado como posible pivote a futuro (ver sección 9), a resolver con una junta de organización propia cuando se confirme.
 
 ## 5. Pendiente / próximos pasos
 - [ ] Esperar feedback del socio de Gerardo sobre la demo en producción — prioridad: alta
@@ -89,6 +90,7 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 - Es un proyecto propio (demo/portfolio), no hay un cliente real detrás todavía — el "negocio" es ficticio (club PULSO) pensado para ilustrar el caso de uso.
 - Bloque horario (mañana/tarde) se calcula automáticamente según la hora de inicio de la clase (antes de las 13:00 = mañana), no se carga a mano.
 - El login "Ingresar como Alumno" siempre entra como el mismo alumno de seed ("Valentina Ríos", usuario id 2), que ya tiene clases confirmadas y una clase cancelada cargada — así la demo de "mi horario" y "aviso por WhatsApp" se puede mostrar sin pasos previos.
+- **Posible pivote a futuro (no confirmado):** si el proyecto avanza, Gerardo planteó que podría crecer a algo más parecido a un CRM — más usuarios, más funcionalidades a pedido, y reportes/analytics. Nada de esto está decidido ni tiene alcance definido. Cuando se confirme, va a hacer falta repensar: autenticación real (no el login demo por rol), un modelo de permisos más granular (posible rol "profesor"), una base de datos que aguante uso concurrente real (refuerza la migración a Postgres ya anotada en pendientes), y una capa de reportes que hoy no existe. No arrancar a diseñar/codear nada de esto hasta que Gerardo confirme que el proyecto sigue adelante con ese alcance — es KISS, no se construye para un escenario todavía hipotético.
 
 ## 10. Lecciones técnicas aprendidas
 - En Windows/Git Bash, pasar JSON con acentos directo en un `curl -d '...'` puede llegar mal codificado a la API por cómo la shell interpreta las comillas — no es un bug del backend. Para probar con caracteres especiales desde bash, escribir el body a un archivo (`printf` con los bytes UTF-8) y usar `--data-binary @archivo`.
