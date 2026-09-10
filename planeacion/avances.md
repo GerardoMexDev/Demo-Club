@@ -9,7 +9,7 @@
 **Al FINALIZAR una sesión:** Claude actualiza este archivo (hecho, pendientes, decisiones nuevas) y corre el cierre de Git (commit local; push cuando exista un remoto configurado — ver sección 8).
 
 **Última actualización:** 2026-09-09
-**Estado general:** en desarrollo — MVP funcional completo, probado de punta a punta
+**Estado general:** desplegado en producción (demo) — https://demo-club.onrender.com/ — pendiente de revisión por el socio de Gerardo
 
 ---
 
@@ -20,7 +20,7 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 - Backend: Python + FastAPI + SQLAlchemy
 - Frontend: HTML/CSS/JS moderno sin build step (ES6 modules, fetch API), separado del backend
 - Base de datos: SQLite (`backend/pulso.db`, se genera sola al arrancar)
-- Hosting: local (demo), sin definir despliegue a producción todavía
+- Hosting: **Render** (plan Free), servicio web único (`backend/` como root directory) — https://demo-club.onrender.com/
 - Integraciones externas: ninguna con credenciales — solo generación de enlaces `wa.me` (sin API oficial de WhatsApp)
 
 ## 3. Estructura de archivos clave
@@ -51,10 +51,17 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 - **QA hecho**: se corrió la app real con `uvicorn`, se probaron los endpoints con `curl`, y se verificó todo el flujo en navegador (login → admin → alumno) con capturas de pantalla, incluyendo viewport mobile (390×844) sin scroll horizontal ni errores de consola.
 - **Casos límite verificados** (con `TestClient`, script descartado después de usarlo): no se puede inscribir a una clase cancelada, no se puede duplicar una inscripción, la inscripción que excede el cupo queda "pendiente" (lista de espera), y no se puede asignar un 3er profesor a una disciplina.
 - Se creó `README.md` con instrucciones exactas para levantar el servidor en local.
-- Primer commit local hecho (`git init`, rama `main`); push a GitHub sigue pendiente de que Gerardo provea un repo remoto.
+- Primer commit local hecho (`git init`, rama `main`); Gerardo pasó el repo remoto (`github.com/GerardoMexDev/Demo-Club`) y se hizo el push inicial.
+- Gerardo revisó la demo completa y dio el visto bueno para pasarla a producción.
+- **Desplegado en Render** (plan Free): servicio web con Root Directory `backend`, build `pip install -r requirements.txt`, start `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
+- Durante el deploy, Render usaba por defecto Python 3.14 y fallaba al compilar `pydantic-core` (sin wheel precompilado para esa versión tan nueva, y el filesystem de build de Render es de solo lectura para la caché de Rust/cargo). Se agregó `backend/runtime.txt` (no lo tomó) y se resolvió fijando la variable de entorno `PYTHON_VERSION=3.12.4` en el dashboard de Render — build y deploy exitosos.
+- Demo en producción confirmada funcionando por Gerardo: https://demo-club.onrender.com/
+- Gerardo avisó que van a venir pedidos futuros ya con datos reales (no ficticios) sobre esta base.
 
 ## 5. Pendiente / próximos pasos
-- [ ] Revisión visual/funcional por Gerardo antes de considerar el MVP "terminado" para presentar — prioridad: alta
+- [ ] Esperar feedback del socio de Gerardo sobre la demo en producción — prioridad: alta
+- [ ] Cuando lleguen los pedidos "con datos reales": definir qué significa exactamente (¿reemplazar el seed ficticio? ¿carga manual desde el admin? ¿importación?) antes de tocar código — prioridad: alta, junta de organización corta antes de codear (Regla 0)
+- [ ] Evaluar migrar de SQLite a una base de datos real (Postgres) apenas haya datos reales/uso concurrente — hoy en Render Free el archivo SQLite se resetea a los datos de seed cada vez que el servicio se duerme por inactividad y despierta — prioridad: alta cuando se confirme el paso a datos reales
 - [ ] Definir si hace falta un modal de confirmación con la identidad de marca en vez de `confirm()` nativo del navegador (eliminar disciplina, cancelar inscripción) — prioridad: baja (cosmético)
 - [ ] Evaluar si se agrega un rol "profesor" con panel propio (fuera del alcance original) — prioridad: baja
 - [ ] Revisar accesibilidad (doc 16) y Lighthouse (doc 06/18) antes de una entrega formal a cliente — prioridad: media, no crítico para una demo interna
@@ -62,6 +69,7 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 ## 6. Bugs conocidos / cosas a vigilar
 - Los Google Fonts (Space Grotesk, Inter) requieren conexión a internet real; en un entorno sin acceso a `fonts.gstatic.com` el navegador cae al fallback `system-ui` (no rompe nada, solo cambia la tipografía). Verificar que la máquina donde se presente la demo tenga internet, o considerar self-host de las fuentes si se va a mostrar offline.
 - El botón "Editar" de una disciplina/clase y "Eliminar"/"Cancelar mi inscripción" usan `confirm()` nativo del navegador en vez de un modal con la identidad visual — funcional pero no 100% "premium". Ver pendiente arriba.
+- **Producción (Render Free) no tiene disco persistente**: si el servicio se duerme por inactividad (~15 min) y alguien vuelve a entrar, arranca una instancia nueva y el SQLite vuelve a los datos de seed originales — se pierde cualquier cambio hecho a mano (clase cancelada de prueba, disciplina nueva, etc.). No es un bug de la app, es una limitación del plan gratis. Aceptado conscientemente para la demo de revisión; hay que resolverlo (Postgres + plan con disco, o servicio pago) antes de cargar datos reales.
 
 ## 7. Decisiones de arquitectura ya tomadas (no reabrir sin motivo)
 - Backend FastAPI en vez de Flask — motivo: validación automática (Pydantic), docs interactivas gratis, tipado moderno, buen fit para una demo técnica.
@@ -86,3 +94,4 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 - En Windows/Git Bash, pasar JSON con acentos directo en un `curl -d '...'` puede llegar mal codificado a la API por cómo la shell interpreta las comillas — no es un bug del backend. Para probar con caracteres especiales desde bash, escribir el body a un archivo (`printf` con los bytes UTF-8) y usar `--data-binary @archivo`.
 - Al capturar un screenshot de una página con animación de entrada (fade-in), esperar a que la animación termine (`waitForTimeout` acorde a `--dur-enfasis`) antes de la captura — si no, la imagen sale opacada/apagada y parece un bug de contraste cuando en realidad es solo el frame inicial de la transición.
 - `FastAPI TestClient` requiere el paquete `httpx` instalado aparte (no viene con `fastapi` ni `uvicorn`); no se agregó a `requirements.txt` porque fue solo para verificar casos límite puntuales, no es una dependencia de la app en producción.
+- En Render, un `runtime.txt` con `python-3.12.4` en el root directory del servicio **no fue suficiente** para fijar la versión de Python (siguió usando 3.14 y rompiendo con `pydantic-core`/maturin). Lo que funcionó fue agregar la variable de entorno `PYTHON_VERSION=3.12.4` directo en el dashboard de Render (Environment). Dejar `runtime.txt` en el repo no molesta, pero para Render la fuente de verdad es la env var.
