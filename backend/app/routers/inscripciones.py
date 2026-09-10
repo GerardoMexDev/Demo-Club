@@ -1,6 +1,6 @@
 """
 Archivo: inscripciones.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: 'Mi horario' del alumno y solicitud de ingreso a una clase.
              Si no hay cupo, la inscripcion queda en estado 'pendiente' (lista de espera).
 Creado: 2026-09-09

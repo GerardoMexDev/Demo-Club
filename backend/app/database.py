@@ -1,6 +1,6 @@
 """
 Archivo: database.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Configuracion de la conexion a SQLite y la sesion de SQLAlchemy.
 Creado: 2026-09-09
 Ultima edicion: 2026-09-09

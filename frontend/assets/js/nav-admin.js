@@ -1,6 +1,6 @@
 /**
  * Archivo: nav-admin.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Barra de navegacion superior del portal Admin. Se monta una
  *              sola vez por pagina para no duplicar el mismo HTML en cada .html.
  * Creado: 2026-09-09
@@ -25,7 +25,7 @@ export function montarNavAdmin(rutaActual) {
 
   contenedor.innerHTML = `
     <div class="container">
-      <div class="marca">PULSO<span class="punto">●</span></div>
+      <div class="marca">Solis<span class="punto">●</span></div>
       <nav aria-label="Navegación admin">${enlaces}</nav>
       <div class="flex items-center gap-sm">
         <span class="texto-small">${usuario ? usuario.nombre : ""}</span>

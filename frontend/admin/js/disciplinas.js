@@ -1,6 +1,6 @@
 /**
  * Archivo: disciplinas.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: CRUD de disciplinas y asignacion de hasta 2 profesores por disciplina.
  * Creado: 2026-09-09
  */

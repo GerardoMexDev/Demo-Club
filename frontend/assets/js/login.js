@@ -1,6 +1,6 @@
 /**
  * Archivo: login.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Logica de la pantalla de login demo (botones por rol).
  * Creado: 2026-09-09
  */

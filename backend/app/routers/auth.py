@@ -1,6 +1,6 @@
 """
 Archivo: auth.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Login de demo por rol (sin password real). Devuelve un usuario
              fijo por rol para poder presentar el prototipo sin fricciones.
 Creado: 2026-09-09

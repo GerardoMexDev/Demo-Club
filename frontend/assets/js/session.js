@@ -1,6 +1,6 @@
 /**
  * Archivo: session.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Maneja la "sesion" de demo (sin password real) guardada en
  *              localStorage, y protege paginas segun el rol requerido.
  * Creado: 2026-09-09

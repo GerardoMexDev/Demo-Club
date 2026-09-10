@@ -1,8 +1,10 @@
-# Sistema de Diseño — PULSO Club (Demo)
+# Sistema de Diseño — Club Solis (Demo)
 
 > Identidad propuesta por Claude (Gerardo delegó la dirección visual). Personalidad: **enérgico, premium, confiable**. Rubro: club deportivo multi-disciplina. Dispositivo dominante: mobile (alumno) + desktop (admin). Sin marca previa → se diseña de cero.
 >
-> Concepto: **"PULSO"** — el club como el punto donde laten distintas disciplinas (fútbol, básquet, vóley, karate...) al mismo ritmo. Fidelidad: nivel "App/PWA completo" (doc 11, A.4) porque hay dos portales, estados, y necesita sentirse un producto, no una landing.
+> Concepto original (sesión 1): **"PULSO"** — el club como el punto donde laten distintas disciplinas (fútbol, básquet, vóley, karate...) al mismo ritmo. Fidelidad: nivel "App/PWA completo" (doc 11, A.4) porque hay dos portales, estados, y necesita sentirse un producto, no una landing.
+>
+> **Nota (sesión 2, 2026-09-10):** el socio de Gerardo pidió renombrar el proyecto a **"Club Solis"**. Se actualizó el nombre en todo el código y la documentación; la paleta, tipografía y componentes de abajo no cambiaron. La metáfora "pulso/latido" del concepto original queda como registro histórico de la sesión 1 — ya no describe literalmente el nuevo nombre. Si se quiere una identidad visual acorde a "Solis" (sol/luz en vez de latido), es una junta de organización aparte.
 
 ## B.1 — Escalas de color (crudas)
 
@@ -81,7 +83,7 @@
 ## B.8 — Iconografía y marca
 
 - Set de íconos: outline, trazo 1.5-2px, consistente (line-icons estilo Feather/Lucide).
-- Logotipo: wordmark "PULSO" en Space Grotesk 700, con un punto (●) en `--color-primario` reemplazando el acento, evocando un "pulso"/latido.
+- Logotipo: wordmark "Club Solis" en Space Grotesk 700, con un punto (●) en `--color-primario` entre ambas palabras (heredado del acento original "evocando un pulso/latido", ver nota de sesión 2 arriba).
 
 ## B.9 — Salida en código (variables CSS)
 

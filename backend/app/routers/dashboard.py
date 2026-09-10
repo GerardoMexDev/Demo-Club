@@ -1,6 +1,6 @@
 """
 Archivo: dashboard.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Datos agregados para las tarjetas de resumen del dashboard Admin.
 Creado: 2026-09-09
 Ultima edicion: 2026-09-09

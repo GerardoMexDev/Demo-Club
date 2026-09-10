@@ -1,6 +1,6 @@
 /**
  * Archivo: explorar.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Explorador de clases del alumno - ver disciplinas/horarios y
  *              solicitar ingreso (confirmado o lista de espera segun cupo).
  * Creado: 2026-09-09

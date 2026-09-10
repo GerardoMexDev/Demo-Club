@@ -1,6 +1,6 @@
 """
 Archivo: main.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Punto de entrada de la API FastAPI. Crea las tablas, siembra datos
              de demo si la base esta vacia, registra los routers y sirve el
              frontend estatico (una sola app en un solo puerto).
@@ -14,7 +14,7 @@ from .database import Base, engine, SessionLocal
 from .seed import sembrar
 from .routers import auth, disciplinas, profesores, clases, inscripciones, dashboard
 
-app = FastAPI(title="PULSO Club API", description="API de demo para gestion de club deportivo")
+app = FastAPI(title="Club Solis API", description="API de demo para gestion de club deportivo")
 
 Base.metadata.create_all(bind=engine)
 

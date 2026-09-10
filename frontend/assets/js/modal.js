@@ -1,6 +1,6 @@
 /**
  * Archivo: modal.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Helpers minimos para abrir/cerrar modales (.modal-overlay),
  *              con cierre por click afuera y tecla Escape.
  * Creado: 2026-09-09

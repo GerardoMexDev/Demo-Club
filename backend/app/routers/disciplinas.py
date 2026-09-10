@@ -1,6 +1,6 @@
 """
 Archivo: disciplinas.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: CRUD de disciplinas (deportes) y asignacion de 1-2 profesores por disciplina.
 Creado: 2026-09-09
 Ultima edicion: 2026-09-09

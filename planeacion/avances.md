@@ -1,15 +1,15 @@
-# Avances del Proyecto — PULSO Club (Demo gestión de club deportivo)
+# Avances del Proyecto — Club Solis (Demo gestión de club deportivo)
 
-> Prefijo de proyecto: `pulso_`
+> Prefijo de proyecto: `pulso_` (interno — nombres de tabla en la base de datos y clave de `localStorage`; no se renombró junto con la marca porque es invisible para el usuario y no aporta tocarlo, ver sección 4, sesión 2)
 
 ## Protocolo de sesión (ritual de inicio y cierre)
 
-**Al INICIAR una sesión:** Gerardo dice "continuamos con PULSO" (o similar). Claude lee este archivo, confirma en qué quedamos y no empieza a codear hasta confirmar el siguiente paso.
+**Al INICIAR una sesión:** Gerardo dice "continuamos con Club Solis" (o similar). Claude lee este archivo, confirma en qué quedamos y no empieza a codear hasta confirmar el siguiente paso.
 
 **Al FINALIZAR una sesión:** Claude actualiza este archivo (hecho, pendientes, decisiones nuevas) y corre el cierre de Git (commit local; push cuando exista un remoto configurado — ver sección 8).
 
-**Última actualización:** 2026-09-09
-**Estado general:** desplegado en producción (demo) — https://demo-club.onrender.com/ — pendiente de revisión por el socio de Gerardo
+**Última actualización:** 2026-09-10
+**Estado general:** desplegado en producción (demo) — https://demo-club.onrender.com/ — renombrado a "Club Solis" por pedido del socio; pendiente redeploy en Render
 
 ---
 
@@ -27,7 +27,7 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 | Archivo/Carpeta | Función |
 |---|---|
 | `planeacion/12-alcance-funcionalidades.md` | Alcance y funcionalidades acordadas |
-| `planeacion/11-sistema-diseno.md` | Sistema de diseño "PULSO" (colores, tipografía, componentes) |
+| `planeacion/11-sistema-diseno.md` | Sistema de diseño "Club Solis" (colores, tipografía, componentes) |
 | `README.md` | Instrucciones para levantar la demo en local |
 | `backend/app/models.py` | Modelos SQLAlchemy (Usuario, Disciplina, Profesor, Clase, Inscripcion) |
 | `backend/app/routers/` | Endpoints REST: auth, disciplinas, profesores, clases, inscripciones, dashboard |
@@ -39,6 +39,13 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 | `frontend/assets/` | CSS (tokens, base, componentes) y JS compartidos (api, toast, session, modal, navs) |
 
 ## 4. Hecho (por fecha, más reciente primero)
+
+### 2026-09-10 — Sesión 2 (rebrand a "Club Solis")
+- A Gerardo le mostró la demo a su socio y le gustó; el único pedido de esta sesión fue cambiar el nombre del proyecto de "PULSO Club" a **"Club Solis"**.
+- Se reemplazó "PULSO Club" → "Club Solis" en todo el código y la documentación visible al usuario: títulos de página (`<title>`), el wordmark del login y de la barra admin, el mensaje de WhatsApp pre-armado, el título de la API de FastAPI, los encabezados de comentario de archivo ("Proyecto: ..."), el `README.md` y los docs de `planeacion/`.
+- **No se tocó** (decisión deliberada, alcance mínimo pedido): el prefijo interno `pulso_` en nombres de tabla de la base de datos (`backend/app/models.py`) ni la clave `pulso_usuario` de `localStorage` (`frontend/assets/js/session.js`) — son detalles de implementación invisibles para el usuario; renombrarlos no aporta nada y suma riesgo de romper algo sin necesidad (KISS).
+- La metáfora de diseño original ("PULSO" = latido del club) quedó registrada como nota histórica en `11-sistema-diseno.md` — no se inventó una nueva identidad visual para "Solis" (sol/luz) porque no se pidió; si Gerardo quiere alinear paleta/logo al nuevo nombre, es una junta de organización aparte.
+- Pendiente: Render tiene auto-deploy activado desde el push a `main` en la sesión 1, así que el redeploy con el nombre nuevo debería dispararse solo al pushear esta sesión — confirmar visualmente en https://demo-club.onrender.com/ después del push.
 
 ### 2026-09-09 — Sesión 1 (planeación + build completo del MVP)
 - Se cargó la metodología Mazdesign (regla 0: no codear sin contexto/acuerdo).
@@ -87,7 +94,7 @@ Prototipo funcional (demo) de gestión de un club deportivo/gimnasio multi-disci
 - Repo GitHub: `https://github.com/GerardoMexDev/Demo-Club` (rama `main`).
 
 ## 9. Notas de contexto de negocio
-- Es un proyecto propio (demo/portfolio), no hay un cliente real detrás todavía — el "negocio" es ficticio (club PULSO) pensado para ilustrar el caso de uso.
+- Es un proyecto propio (demo/portfolio), no hay un cliente real detrás todavía — el "negocio" es ficticio (Club Solis) pensado para ilustrar el caso de uso.
 - Bloque horario (mañana/tarde) se calcula automáticamente según la hora de inicio de la clase (antes de las 13:00 = mañana), no se carga a mano.
 - El login "Ingresar como Alumno" siempre entra como el mismo alumno de seed ("Valentina Ríos", usuario id 2), que ya tiene clases confirmadas y una clase cancelada cargada — así la demo de "mi horario" y "aviso por WhatsApp" se puede mostrar sin pasos previos.
 - **Posible pivote a futuro (no confirmado):** si el proyecto avanza, Gerardo planteó que podría crecer a algo más parecido a un CRM — más usuarios, más funcionalidades a pedido, y reportes/analytics. Nada de esto está decidido ni tiene alcance definido. Cuando se confirme, va a hacer falta repensar: autenticación real (no el login demo por rol), un modelo de permisos más granular (posible rol "profesor"), una base de datos que aguante uso concurrente real (refuerza la migración a Postgres ya anotada en pendientes), y una capa de reportes que hoy no existe. No arrancar a diseñar/codear nada de esto hasta que Gerardo confirme que el proyecto sigue adelante con ese alcance — es KISS, no se construye para un escenario todavía hipotético.

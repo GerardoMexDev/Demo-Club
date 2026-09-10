@@ -1,4 +1,4 @@
-# Alcance y Funcionalidades — PULSO Club (Demo)
+# Alcance y Funcionalidades — Club Solis (Demo)
 
 > Prefijo de proyecto: `pulso_` (nombres de tabla, funciones custom).
 

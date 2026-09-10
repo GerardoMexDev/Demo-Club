@@ -1,6 +1,6 @@
 /**
  * Archivo: toast.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Sistema de notificaciones tipo toast (feedback de cada accion
  *              del usuario), con la identidad visual del sistema de diseno.
  * Creado: 2026-09-09

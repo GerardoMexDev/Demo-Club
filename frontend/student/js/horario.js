@@ -1,6 +1,6 @@
 /**
  * Archivo: horario.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: "Mi horario" del alumno - sus inscripciones agrupadas por dia,
  *              con aviso si la clase fue cancelada por el admin.
  * Creado: 2026-09-09

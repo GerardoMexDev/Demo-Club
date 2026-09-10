@@ -1,6 +1,6 @@
 """
 Archivo: clases.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Gestion de horarios/clases - abrir grupo, modificar, cancelar,
              y consultar los inscriptos de una clase (para el aviso por WhatsApp).
 Creado: 2026-09-09

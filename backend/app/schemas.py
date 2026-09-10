@@ -1,6 +1,6 @@
 """
 Archivo: schemas.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Esquemas Pydantic para validar entrada/salida de la API.
 Creado: 2026-09-09
 Ultima edicion: 2026-09-09

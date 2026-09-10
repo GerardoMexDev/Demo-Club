@@ -1,6 +1,6 @@
 /**
  * Archivo: perfil.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Pantalla de perfil del alumno (datos + cerrar sesion).
  * Creado: 2026-09-09
  */

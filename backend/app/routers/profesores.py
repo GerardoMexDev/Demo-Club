@@ -1,6 +1,6 @@
 """
 Archivo: profesores.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Alta y listado de profesores (pool desde el que se asignan a disciplinas).
 Creado: 2026-09-09
 Ultima edicion: 2026-09-09

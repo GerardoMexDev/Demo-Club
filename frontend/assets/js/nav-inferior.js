@@ -1,6 +1,6 @@
 /**
  * Archivo: nav-inferior.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Barra de navegacion inferior del portal Alumno (mobile-first).
  * Creado: 2026-09-09
  */

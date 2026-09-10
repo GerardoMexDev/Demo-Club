@@ -1,4 +1,4 @@
-# PULSO Club — Demo de gestión de club deportivo
+# Club Solis — Demo de gestión de club deportivo
 
 Prototipo funcional de gestión de un club deportivo/gimnasio multi-disciplina.
 Portal **Admin** (catálogos, horarios, avisos por WhatsApp, dashboard) y portal

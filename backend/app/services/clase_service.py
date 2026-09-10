@@ -1,6 +1,6 @@
 """
 Archivo: clase_service.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Logica compartida sobre clases (cupos, serializacion) usada por
              varios routers (clases, inscripciones, dashboard).
 Creado: 2026-09-09

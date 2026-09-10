@@ -1,6 +1,6 @@
 /**
  * Archivo: dashboard.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Carga el resumen y las clases de hoy para el dashboard Admin.
  * Creado: 2026-09-09
  */

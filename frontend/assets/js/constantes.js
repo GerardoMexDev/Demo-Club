@@ -1,6 +1,6 @@
 /**
  * Archivo: constantes.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Constantes y helpers de formato compartidos entre paginas
  *              (dias de la semana, horas, mensaje de WhatsApp).
  * Creado: 2026-09-09
@@ -21,7 +21,7 @@ export function armarMensajeCancelacion(nombreAlumno, clase) {
   const hora = formatearHora(clase.hora_inicio);
   const motivo = clase.motivo_cancelacion ? ` Motivo: ${clase.motivo_cancelacion}.` : "";
   return (
-    `Hola ${nombreAlumno}! Te escribimos de PULSO Club para avisarte que la clase de ` +
+    `Hola ${nombreAlumno}! Te escribimos de Club Solis para avisarte que la clase de ` +
     `${clase.disciplina.nombre} del ${dia} ${hora}hs fue cancelada.${motivo} ` +
     `Disculpá las molestias, cualquier duda escribinos por acá.`
   );

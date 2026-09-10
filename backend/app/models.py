@@ -1,6 +1,6 @@
 """
 Archivo: models.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Modelos SQLAlchemy - Usuario, Disciplina, Profesor, Clase, Inscripcion.
 Creado: 2026-09-09
 Ultima edicion: 2026-09-09

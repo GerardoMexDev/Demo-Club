@@ -1,6 +1,6 @@
 /**
  * Archivo: api.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Wrapper de fetch para hablar con la API FastAPI. Centraliza
  *              manejo de errores para que cada pantalla no repita try/catch.
  * Creado: 2026-09-09

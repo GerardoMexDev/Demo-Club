@@ -1,6 +1,6 @@
 """
 Archivo: seed.py
-Proyecto: PULSO Club (demo)
+Proyecto: Club Solis (demo)
 Descripcion: Datos semilla para que la demo nunca arranque vacia: 4 disciplinas,
              profesores ficticios, agenda de tarde completa (+ un par de clases
              de manana para mostrar el soporte de bloques) y alumnos con

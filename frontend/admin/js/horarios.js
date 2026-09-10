@@ -1,6 +1,6 @@
 /**
  * Archivo: horarios.js
- * Proyecto: PULSO Club (demo)
+ * Proyecto: Club Solis (demo)
  * Descripcion: Abrir grupos, modificar horarios, cancelar/reactivar clases,
  *              y el panel de "Avisar por WhatsApp" para clases canceladas.
  * Creado: 2026-09-09
